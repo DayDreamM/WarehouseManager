@@ -1,0 +1,37 @@
+﻿<Page x:Class="CheckOutApp.views.ManManagement"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ManManagement">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Background="#FF1196A3">
+            <TextBlock  FontSize="24"  Margin="20,7,0,0" Foreground="White">人员管理中心</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="15,0">
+            <Button Width="100" Height="35" Margin="8,0,0,0" FontSize="12" x:Name="AddBtn"   FontFamily="Microsoft YaHei" Background="#FF1196A3" Foreground="White" Click="AddBtn_Click">新增人员</Button>
+        </StackPanel>
+        <DataGrid  Grid.Row="2" Margin="15,20,15,5"  x:Name="UserDataGrid"  GridLinesVisibility="All"  AutoGenerateColumns="False" HeadersVisibility="Column"   CanUserAddRows="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="人员姓名" Width="1*" Binding="{Binding realname}"></DataGridTextColumn>
+                <DataGridTextColumn Header="人员账号" Width="1*" Binding="{Binding username}"></DataGridTextColumn>
+                <DataGridTextColumn Header="人员密码" Width="1*" Binding="{Binding password}"></DataGridTextColumn>
+                <DataGridTextColumn Header="性别" Width="1*" Binding="{Binding sex}"></DataGridTextColumn>
+                <DataGridTextColumn Header="联系电话" Width="1*" Binding="{Binding phonenumber}"></DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="DeleteCheck" Header="删除人员" Click="Delete_Click"></MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+    </Grid>
+</Page>

@@ -13,5 +13,7 @@ namespace CheckOutApp.entity
         public string password { get; set; }
         public string realname { get; set; }
         public string identity { get; set; }
+        public string sex { get; set; }
+        public string phonenumber { get; set; }
     }
 }

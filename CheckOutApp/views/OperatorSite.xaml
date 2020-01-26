@@ -1,0 +1,57 @@
+﻿<Page x:Class="CheckOutApp.views.OperatorSite"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CheckOutApp.views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OperatorSite">
+    <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="55"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Background="#FF1196A3">
+            <TextBlock  FontSize="24"  Margin="20,7,0,0" Foreground="White">操作员中心</TextBlock>
+            </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="15,0">
+            <Button Width="120" Height="35" Margin="8,0,0,0" FontSize="12" x:Name="AddCarBtn"   FontFamily="Microsoft YaHei" Background="#FF1196A3" Foreground="White" Click="AddCarBtn_Click">新增在场车辆</Button>
+            <Button Width="100" Height="35" Margin="8,0,0,0" FontSize="12" x:Name="AddBtn"   FontFamily="Microsoft YaHei" Background="#FF1196A3" Foreground="White" Click="AddBtn_Click">新增记录</Button>
+            <Button Width="100" Height="35" Margin="8,0,0,0" FontSize="12" x:Name="PrintBtn"   FontFamily="Microsoft YaHei" Background="#FF1196A3" Foreground="White" Click="BathPrintBtn_Click">批量打印</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <TextBlock  FontSize="15"  Margin="20,7,0,0" Foreground="White" Background="#37C6C0">在场车辆</TextBlock>
+            <DataGrid Margin="15,20,15,5"  x:Name="InCarGrid"  GridLinesVisibility="All"  AutoGenerateColumns="False" HeadersVisibility="Column"   CanUserAddRows="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="所属公司" Width="1*" Binding="{Binding company}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="车牌号" Width="1*" Binding="{Binding carNumber}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="入场时间" Width="1*" Binding="{Binding inTime}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <TextBlock  FontSize="15"  Margin="20,7,0,0" Foreground="White" Background="#37C6C0">出场单据记录</TextBlock>
+            <DataGrid   Margin="15,20,15,5"  x:Name="RecordDataGrid"  GridLinesVisibility="All"  AutoGenerateColumns="False" HeadersVisibility="Column"   CanUserAddRows="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="单据号" Width="1*" Binding="{Binding recordId}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="所属公司" Width="1*" Binding="{Binding company}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="车牌号" Width="1*" Binding="{Binding carNumber}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="入场时间" Width="1*" Binding="{Binding inTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="总数(方)" Width="1*" Binding="{Binding totalNumber}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="总金额(元)" Width="1*" Binding="{Binding totalSum}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="付款方式" Width="1*" Binding="{Binding paymentMethod}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="记账人" Width="1*" Binding="{Binding recordOperator}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="备注" Width="1*" Binding="{Binding remark}"></DataGridTextColumn>
+                </DataGrid.Columns>
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="PrintCheck" Header="打印单据" Click="PrintCheck_Click"></MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

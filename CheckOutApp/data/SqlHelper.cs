@@ -7,7 +7,7 @@ namespace CheckOutApp.data
     class SqlHelper
     {
         static string conStr = ConfigurationManager.AppSettings["conStr"];
-        public static int ExecuteNonQuery(string sqlText, params SqlParameter[] parameters)
+        public static int ExecuteNonQuery(string sqlText, params OleDbParameter[] parameters)
         {
             using (OleDbConnection conn = new OleDbConnection(conStr))
             {

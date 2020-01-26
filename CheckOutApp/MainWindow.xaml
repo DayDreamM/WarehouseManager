@@ -1,12 +1,65 @@
-﻿<Window x:Class="CheckOutApp.MainWindow"
+﻿<controls:MetroWindow
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls" x:Class="CheckOutApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckOutApp"
         mc:Ignorable="d"
-        Title="出入库管理系统" Height="600" Width="1000">
+        Title="出入库管理系统" Height="900" Width="1500" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Width="100" Height="50" x:Name="Add" Click="Add_Click">新增</Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="255"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.ColumnSpan="2">
+            <MenuItem Header="菜单" Click="MenuItem_Click_1">
+                <MenuItem Header="修改密码" x:Name="EditPasswordBtn"></MenuItem>
+                <MenuItem Header="费用参数设置"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="地磅设置" x:Name="Weighbridge" Click="Weighbridge_Click"></MenuItem>
+            <MenuItem Header="关于" Click="MenuItem_Click"></MenuItem>
+        </Menu>
+        <Border Grid.Row="1" Grid.Column="0" BorderBrush="Gray" BorderThickness="0,1,1,0">
+            <StackPanel>
+                <Button x:Name="ManagerBtn" Click="page3Button" Width="220" Height="52" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,15,0,0">
+                    <WrapPanel>
+                        <Image Source="resource/人员.png" Height="50"></Image>
+                        <TextBlock TextWrapping="Wrap" Text="人员管理" Width="100" FontSize="15" VerticalAlignment="Center" Padding="20,0,0,0"></TextBlock>
+                    </WrapPanel>
+                </Button>
+                <Button x:Name="ManagetSiteBtn" Click="page1Button" Width="220" Height="52" Margin="15,15,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <WrapPanel>
+                        <Image Source="resource/管理.png" Height="50"></Image>
+                        <TextBlock TextWrapping="Wrap" Text="管理员中心" Width="100" FontSize="15" VerticalAlignment="Center" Padding="20,0,0,0"></TextBlock>
+                    </WrapPanel>
+                </Button>
+                <Button x:Name="OperatorBtn" Click="page2Button" Width="220" Height="52" Margin="15,15,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <WrapPanel>
+                        <Image Source="resource/管理.png" Height="50"></Image>
+                        <TextBlock TextWrapping="Wrap" Text="操作员中心" Width="100" FontSize="15" VerticalAlignment="Center" Padding="20,0,0,0"></TextBlock>
+                    </WrapPanel>
+                </Button>
+                <Button x:Name="ReportBtn" Click="page4Button" Width="220" Height="52" Margin="15,15,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <WrapPanel>
+                        <Image Source="resource/报表.png" Height="50"></Image>
+                        <TextBlock TextWrapping="Wrap" Text="报表中心" Width="100" FontSize="15" VerticalAlignment="Center" Padding="20,0,0,0"></TextBlock>
+                    </WrapPanel>
+                 </Button>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="2" BorderBrush="Gray" BorderThickness="0,1,0,0">
+            <Frame  Name="mainFrame" NavigationUIVisibility="Hidden"></Frame>
+        </Border>
+        <Border Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="Gray" BorderThickness="0,1,0,0">
+            <StackPanel  Height="25">
+                <TextBlock x:Name="OperatorText" FontSize="16" VerticalAlignment="Center" Margin="25,2,0,0"></TextBlock>
+            </StackPanel>
+        </Border>
     </Grid>
-</Window>
+</controls:MetroWindow>

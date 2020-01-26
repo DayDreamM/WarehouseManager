@@ -1,5 +1,6 @@
 ﻿using CheckOutApp.data;
 using CheckOutApp.entity;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace CheckOutApp
     /// <summary>
     /// LoginWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginWindow :  MetroWindow
     {
         public LoginWindow()
         {
@@ -28,13 +29,23 @@ namespace CheckOutApp
         //登录按钮
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            User user = new User();
             string username = txtUserName.Text.Trim();
             string password = txtPassword.Password.Trim();
             bool flag = DBService.Login(username, password);
             if(flag == true)
             {
                 MainWindow mainWindow = new MainWindow();
+                if (Static_oprator.identity.Equals("0"))
+                {
+                    mainWindow.OperatorText.Text = "操作员：" + Static_oprator.realname;
+                    mainWindow.ManagerBtn.Visibility = Visibility.Collapsed;
+                    mainWindow.ManagetSiteBtn.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    mainWindow.OperatorText.Text = "管理员：" + Static_oprator.realname;
+                    mainWindow.OperatorBtn.Visibility = Visibility.Collapsed;
+                }
                 mainWindow.Show();
                 Close();
             }
@@ -50,16 +61,6 @@ namespace CheckOutApp
             {
                 DragMove();
             }
-        }
-        //最小化
-        private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-        //单击关闭图标
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Close();
         }
     }
 }

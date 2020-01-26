@@ -1,0 +1,14 @@
+﻿<controls:MetroWindow
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls" x:Class="CheckOutApp.views.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CheckOutApp.views"
+        mc:Ignorable="d"
+        Title="关于" Height="200" Width="450"  WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="出入库管理系统   Version 1.0" HorizontalAlignment="Left" Margin="60,50,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Designed by Xuqiongmin" HorizontalAlignment="Left" Margin="250,120,0,0" VerticalAlignment="Top" FontSize="12"></Label>
+    </Grid>
+</controls:MetroWindow>

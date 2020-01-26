@@ -1,0 +1,72 @@
+﻿using CheckOutApp.data;
+using CheckOutApp.entity;
+using CheckOutApp.utill;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace CheckOutApp.views
+{
+    /// <summary>
+    /// OperatorSite.xaml 的交互逻辑
+    /// </summary>
+    public partial class OperatorSite : Page
+    {
+        public OperatorSite()
+        {
+            InitializeComponent();
+            init();
+        }
+        public void init()
+        {
+            List<CheckoutRecord> records = DBService.GetCheckoutRecords();
+            RecordDataGrid.ItemsSource = records;
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddRecord addRecord = new AddRecord();
+            addRecord.ShowDialog();
+            if (addRecord.DialogResult == true)
+            {
+                init();
+            }
+        }
+
+        private void PrintCheck_Click(object sender, RoutedEventArgs e)
+        {
+            if (RecordDataGrid.SelectedItem is CheckoutRecord record)
+            {
+                PrintUtill utill = new PrintUtill
+                {
+                    record = record
+                };
+                utill.PrintService();
+            }
+
+        }
+        //弹出批量打印窗口
+        private void BathPrintBtn_Click(object sender, RoutedEventArgs e)
+        {
+            BathPrint bathPrint = new BathPrint();
+            bathPrint.ShowDialog();
+        }
+        //新增在场车辆
+        private void AddCarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddInCar addInCar = new AddInCar();
+            addInCar.ShowDialog();
+        }
+    }
+}
