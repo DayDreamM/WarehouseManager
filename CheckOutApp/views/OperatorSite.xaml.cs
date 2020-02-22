@@ -1,20 +1,9 @@
 ﻿using CheckOutApp.data;
 using CheckOutApp.entity;
 using CheckOutApp.utill;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CheckOutApp.views
 {
@@ -31,9 +20,11 @@ namespace CheckOutApp.views
         public void init()
         {
             List<CheckoutRecord> records = DBService.GetCheckoutRecords();
+            List<InCar> cars = DBService.GetInCars();
             RecordDataGrid.ItemsSource = records;
+            InCarGrid.ItemsSource = cars;
         }
-
+        //新增按钮
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             AddRecord addRecord = new AddRecord();
@@ -67,6 +58,21 @@ namespace CheckOutApp.views
         {
             AddInCar addInCar = new AddInCar();
             addInCar.ShowDialog();
+            if (addInCar.DialogResult == true)
+            {
+                init();
+            }
+        }
+        //结算出场
+        private void outCar_Click(object sender, RoutedEventArgs e)
+        {
+            if (InCarGrid.SelectedItem is InCar inCar)
+            {
+                OutCar outCar = new OutCar();
+                outCar.company.Text = inCar.company;
+                outCar.carnumber.Text = inCar.carNumber;
+                outCar.ShowDialog();
+            }
         }
     }
 }

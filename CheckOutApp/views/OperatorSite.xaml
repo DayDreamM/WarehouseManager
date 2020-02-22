@@ -30,6 +30,11 @@
                     <DataGridTextColumn Header="车牌号" Width="1*" Binding="{Binding carNumber}"></DataGridTextColumn>
                     <DataGridTextColumn Header="入场时间" Width="1*" Binding="{Binding inTime}"></DataGridTextColumn>
                 </DataGrid.Columns>
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem  x:Name="outCar" Header="结账出场" Click="outCar_Click"></MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
             </DataGrid>
         </StackPanel>
         <StackPanel Grid.Row="3">

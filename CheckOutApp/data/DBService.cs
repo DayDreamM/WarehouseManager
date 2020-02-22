@@ -87,6 +87,29 @@ namespace CheckOutApp.data
             conn.Close();
             return list;
         }
+        //获取在场车辆记录
+        public static List<InCar> GetInCars()
+        {
+            List<InCar> list = new List<InCar>();
+            string query = "select * from  incar as t ";
+            OleDbConnection conn = new OleDbConnection(conStr);
+            conn.Open();
+            OleDbCommand cmd = new OleDbCommand(query, conn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                InCar car = new InCar();
+                {
+                    car.carNumber = reader.GetValue(1).ToString();
+                    car.carWeight = reader.GetValue(2).ToString();
+                    car.company = reader.GetValue(3).ToString();
+                    car.remark = reader.GetValue(4).ToString();
+                };
+                list.Add(car);
+            }
+            conn.Close();
+            return list;
+        }
         //获取人员信息
         public static List<User> GetUserInfo()
         {

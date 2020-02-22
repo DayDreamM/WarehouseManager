@@ -89,6 +89,8 @@
     </ApplicationDefinition>
     <Compile Include="data\DBService.cs" />
     <Compile Include="entity\CheckoutRecord.cs" />
+    <Compile Include="entity\InCar.cs" />
+    <Compile Include="entity\Port.cs" />
     <Compile Include="entity\Static_oprator.cs" />
     <Compile Include="entity\Statistics.cs" />
     <Compile Include="entity\User.cs" />
@@ -96,6 +98,7 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="utill\PortConfig.cs" />
+    <Compile Include="utill\PortUtil.cs" />
     <Compile Include="utill\PrintUtill.cs" />
     <Compile Include="views\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
@@ -126,6 +129,9 @@
     </Compile>
     <Compile Include="views\OperatorSite.xaml.cs">
       <DependentUpon>OperatorSite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\OutCar.xaml.cs">
+      <DependentUpon>OutCar.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\ReportCenter.xaml.cs">
       <DependentUpon>ReportCenter.xaml</DependentUpon>
@@ -184,6 +190,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\OperatorSite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\OutCar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

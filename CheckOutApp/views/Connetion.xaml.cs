@@ -1,4 +1,5 @@
-﻿using CheckOutApp.utill;
+﻿using CheckOutApp.entity;
+using CheckOutApp.utill;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -55,7 +56,7 @@ namespace CheckOutApp.views
             }
             if (PortConfig.serialPort1.IsOpen == false)
             {
-                PortConfig.serialPort1.PortName = cbbComList.SelectedItem.ToString();
+                Port.PortName = cbbComList.SelectedItem.ToString();
                 PortConfig.serialPort1.BaudRate = 9600;
                 PortConfig.serialPort1.Parity = Parity.None;
                 PortConfig.serialPort1.DataBits = 8;
